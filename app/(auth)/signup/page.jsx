@@ -37,7 +37,7 @@ export default function SignUpPage() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-2">Beta User Sign Up</h2>
           <p className="text-gray-600 text-lg sm:text-2xl md:text-2xl">Enter your details below.</p>
         </CardHeader>
-        
+
         <hr className="my-6 border-gray-300" />
 
         <CardContent className="p-0">
@@ -71,6 +71,18 @@ export default function SignUpPage() {
                   className="bg-[#9590EF] text-center placeholder:text-white placeholder:text-[15px]"
                   required
                 />
+
+                <Input
+                  type="tel"
+                  placeholder="Phone Number"
+                  className="bg-[#9590EF] text-center placeholder:text-white placeholder:text-[15px]"
+                />
+                <Input
+                  type="text"
+                  placeholder="Business Type"
+                  className="bg-[#9590EF] text-center placeholder:text-white placeholder:text-[15px]"
+                />
+
               </div>
 
               <div className="pt-8">
@@ -87,7 +99,7 @@ export default function SignUpPage() {
               <h3 className="text-2xl text-center font-semibold text-gray-800">
                 Schedule a Meeting
               </h3>
-              <Calendly 
+              <Calendly
                 url="https://calendly.com/smileconnect-health/30min"
                 className="min-w-[320px] h-[500px] md:h-[600px] lg:h-[700px] rounded-lg overflow-hidden"
               />

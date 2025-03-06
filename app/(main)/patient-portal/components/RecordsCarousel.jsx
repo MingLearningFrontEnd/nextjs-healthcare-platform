@@ -121,13 +121,17 @@ export default function RecordsCarousel({ patientId }) {
   }
 
   return (
-    <div className="bg-transparent rounded-sm  ">
-      <div className="relative  mx-auto  pt-8 pb-16 bg-transparent rounded-md ">
-        <div className="flex bg-white justify-between  align-middle px-4 py-6 rounded-sm shadow-all">
-          <h2 className=" font-bold lg:text-3xl  md:text-2xl sm:text-2xl">Dental Records</h2>
+    <div className="bg-transparent rounded-sm">
+      <div className="relative mx-auto pt-8 pb-16 bg-transparent rounded-md">
+        <div className="flex bg-white justify-between align-middle px-4 py-6 rounded-sm shadow-all">
+          <h2 className="font-bold lg:text-3xl md:text-2xl sm:text-2xl">Dental Records</h2>
           <button
             onClick={toggleFilters}
-            className=" mr-2 p-2 bg-[#D9D9D9] rounded-md z-10 hover:bg-gray-400"
+            className={cn(
+              "mr-2 p-2 bg-[#D9D9D9] rounded-sm hover:bg-gray-400",
+              showFilters ? "border-2 border-[#7B61FF]" : ""
+            )}
+            variant="ghost"
             aria-label="Toggle Filters"
           >
             <FilterIcon />

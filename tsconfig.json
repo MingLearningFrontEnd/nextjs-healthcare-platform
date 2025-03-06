@@ -8,7 +8,7 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/patient-portal/components/PatientBanner.jsx", "app/patient-portal/[patientId]/settings/page.jsx", "app/patient-portal/[patientId]/record/[id]/page.jsx", "app/patient-portal/[patientId]/page.jsx", "app/(main)/layout.jsx", "app/patient-portal/components/Navigation.jsx", "app/patient-portal/components/RecordsCarousel.jsx", "app/patient-portal/components/DetailedRecordView.tsx", "app/patient-portal/components/DiagnosticTreatmentView.jsx", "app/patient-portal/components/TeethModel3D.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/patient-portal/components/PatientBanner.jsx", "app/patient-portal/[patientId]/settings/page.jsx", "app/patient-portal/[patientId]/record/[id]/page.jsx", "app/patient-portal/[patientId]/page.jsx", "app/(main)/layout.jsx", "app/patient-portal/components/Navigation.jsx", "app/patient-portal/components/RecordsCarousel.jsx", "app/patient-portal/components/DetailedRecordView.tsx", "app/patient-portal/components/DiagnosticTreatmentView.jsx", "app/patient-portal/components/TeethModel3D.jsx", "app/(main)/provider-portal/components/ProviderBanner.jsx", "app/(main)/provider-portal/components/ProviderNavigation.jsx", "**/*.jsx", "**/*.js"],
   "exclude": ["node_modules"]
 }

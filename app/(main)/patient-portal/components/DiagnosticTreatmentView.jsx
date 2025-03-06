@@ -10,6 +10,8 @@ import {SmileIcon as Tooth, Syringe, Stethoscope, CalendarDays, ChevronRight, Pi
 import TeethIcon from '@/public/assets/Vector_Teeth.svg'
 import BrushIcon from '@/public/assets/Vector_Brush.svg'
 import CanlenderIcon from '@/public/assets/Vector_canlender.svg'
+import { cn } from "@/lib/utils"
+
 // Import the recordsData
 import { recordsData } from "./DetailedRecordView"
 
@@ -155,7 +157,7 @@ export default function DiagnosticTreatmentView({ patientId }) {
        <Card className="shadow-all w-full max-w-[95vw] xs:max-w-[95vw] overflow-hidden">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-xl  sm:text-2xl md:text-2xl lg:text-2xl font-bold ">Diagnostics</CardTitle>
-          <Button variant="ghost" size="sm" onClick={() => setExpandedDiagnostics(!expandedDiagnostics)} className="sm:text-[10px] md:text-[12px] lg:text-[14px] border-gray-300 border-2">
+          <Button variant="ghost" size="sm" onClick={() => setExpandedDiagnostics(!expandedDiagnostics)} className={cn("sm:text-[10px] md:text-[12px] lg:text-[14px] border-gray-300 border-2",expandedDiagnostics ? "border-2 border-[#7B61FF]" : "")}>
             {expandedDiagnostics ? "Show Less" : "View All"}
           </Button>
         </CardHeader>
@@ -196,7 +198,7 @@ export default function DiagnosticTreatmentView({ patientId }) {
       <Card className="shadow-all w-full max-w-[95vw] xs:max-w-[95vw] overflow-hidden">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 ">
           <CardTitle className="text-xl  sm:text-2xl md:text-2xl lg:text-2xl font-bold ">Treatments</CardTitle>
-          <Button variant="ghost" size="sm" onClick={() => setExpandedTreatments(!expandedTreatments)} className="sm:text-[10px] md:text-[12px] lg:text-[14px] border-gray-300 border-2">
+          <Button variant="ghost" size="sm" onClick={() => setExpandedTreatments(!expandedTreatments)} className={cn("sm:text-[10px] md:text-[12px] lg:text-[14px] border-gray-300 border-2",expandedTreatments ? "border-2 border-[#7B61FF]" : "")}>
             {expandedTreatments ? "Show Less" : "View All"}
           </Button>
         </CardHeader>

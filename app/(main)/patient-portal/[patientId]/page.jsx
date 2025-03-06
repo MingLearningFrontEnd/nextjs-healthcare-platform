@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import PatientBanner from "../components/PatientBanner"
 import RecordsCarousel from "../components/RecordsCarousel"
 import TeethModel from "../components/TeethModel"
-import TeethModel3D from "../components/TeethModel3D"
 import DiagnosticTreatmentView from "../components/DiagnosticTreatmentView"
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPatientData } from '../../../store/slices/paitentSlice';

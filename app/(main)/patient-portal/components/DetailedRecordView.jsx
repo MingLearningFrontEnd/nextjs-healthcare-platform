@@ -79,9 +79,53 @@ export const recordsData = [
     },
     billing: {
       totalCost: "$250",
-      insuranceClaim: "Submitted on 2025-01-16, pending approval",
-      patientPayment: "$50 copay",
+      insuranceCovered: "$200",
+      outOfPocket: "$50",
       outstandingBalance: "$0",
+      insuranceClaimStatus: "Submitted on 2025-01-16, approved",
+      upcomingBills: [
+        {
+          id: "9-1",
+          name: "Root Canal Treatment",
+          date: "2025-04-15",
+          amount: "$850",
+        },
+        {
+          id: "9-2",
+          name: "Dental Crown Installation",
+          date: "2025-04-22",
+          amount: "$1200",
+        },
+        {
+          id: "9-3",
+          name: "Regular Checkup & Cleaning",
+          date: "2025-05-01",
+          amount: "$150",
+        }
+      ],
+      paymentHistory: [
+        {
+          id: "9-1",
+          name: "Teeth Whitening",
+          date: "2025-03-22",
+          amount: "$500",
+          receiptUrl: "/receipts/9-1"
+        },
+        {
+          id: "9-2",
+          name: "Regular Checkup",
+          date: "2025-02-03",
+          amount: "$150",
+          receiptUrl: "/receipts/9-2"
+        },
+        {
+          id: "9-3",
+          name: "Cavity Filling",
+          date: "2025-01-16",
+          amount: "$250",
+          receiptUrl: "/receipts/9-3"
+        }
+      ]
     },
   },
   {
@@ -95,7 +139,7 @@ export const recordsData = [
         policyNumber: "DCP123456789",
         expiryDate: "2025-12-31",
       },
-      date: "2024-11-03",
+      date: "2025-2-03",
       purposeOfVisit: "Regular Checkup",
       provider: "Dr. Michael Lee, DDS",
       practice: "SmileBright Dental, Chicago, IL",
@@ -147,9 +191,53 @@ export const recordsData = [
     },
     billing: {
       totalCost: "$150",
-      insuranceClaim: "Submitted on 2024-11-03, approved",
-      patientPayment: "$20 copay",
+      insuranceCovered: "$100",
+      outOfPocket: "$50",
       outstandingBalance: "$0",
+      insuranceClaimStatus: "Submitted on 2024-11-03, approved",
+      upcomingBills: [
+        {
+          id: "8-1",
+          name: "Root Canal Treatment",
+          date: "2025-04-15",
+          amount: "$850",
+        },
+        {
+          id: "8-2",
+          name: "Dental Crown Installation",
+          date: "2025-04-22",
+          amount: "$1200",
+        },
+        {
+          id: "8-3",
+          name: "Regular Checkup & Cleaning",
+          date: "2025-05-01",
+          amount: "$150",
+        }
+      ],
+      paymentHistory: [
+        {
+          id: "8-1",
+          name: "Teeth Whitening",
+          date: "2025-03-22",
+          amount: "$500",
+          receiptUrl: "/receipts/8-1"
+        },
+        {
+          id: "8-2",
+          name: "Regular Checkup",
+          date: "2025-02-03",
+          amount: "$150",
+          receiptUrl: "/receipts/8-2"
+        },
+        {
+          id: "8-3",
+          name: "Cavity Filling",
+          date: "2025-01-16",
+          amount: "$250",
+          receiptUrl: "/receipts/8-3"
+        }
+      ]
     },
   },
   {
@@ -163,7 +251,7 @@ export const recordsData = [
         policyNumber: "DCP123456789",
         expiryDate: "2025-12-31",
       },
-      date: "2024-07-22",
+      date: "2025-03-22",
       purposeOfVisit: "Teeth Whitening",
       provider: "Dr. Emily Carter, DDS",
       practice: "SmileBright Dental, Chicago, IL",
@@ -215,9 +303,53 @@ export const recordsData = [
     },
     billing: {
       totalCost: "$500",
-      insuranceClaim: "Cosmetic procedure - not covered",
-      patientPayment: "$500",
+      insuranceCovered: "$400",
+      outOfPocket: "$100",
       outstandingBalance: "$0",
+      insuranceClaimStatus: "Cosmetic procedure - not covered",
+      upcomingBills: [
+        {
+          id: "7-1",
+          name: "Root Canal Treatment",
+          date: "2025-04-15",
+          amount: "$850",
+        },
+        {
+          id: "7-2",
+          name: "Dental Crown Installation",
+          date: "2025-04-22",
+          amount: "$1200",
+        },
+        {
+          id: "7-3",
+          name: "Regular Checkup & Cleaning",
+          date: "2025-05-01",
+          amount: "$150",
+        }
+      ],
+      paymentHistory: [
+        {
+          id: "7-1",
+          name: "Teeth Whitening",
+          date: "2025-03-22",
+          amount: "$500",
+          receiptUrl: "/receipts/7-1"
+        },
+        {
+          id: "7-2",
+          name: "Regular Checkup",
+          date: "2025-02-03",
+          amount: "$150",
+          receiptUrl: "/receipts/7-2"
+        },
+        {
+          id: "7-3",
+          name: "Cavity Filling",
+          date: "2025-01-16",
+          amount: "$250",
+          receiptUrl: "/receipts/7-3"
+        }
+      ]
     },
   },
   {
@@ -283,9 +415,53 @@ export const recordsData = [
     },
     billing: {
       totalCost: "$300",
-      insuranceClaim: "Submitted on 2024-03-15, approved",
-      patientPayment: "$60 copay",
+      insuranceCovered: "$200",
+      outOfPocket: "$100",
       outstandingBalance: "$0",
+      insuranceClaimStatus: "Submitted on 2024-03-15, approved",
+      upcomingBills: [
+        {
+          id: "6-1",
+          name: "Root Canal Treatment",
+          date: "2025-04-15",
+          amount: "$850",
+        },
+        {
+          id: "6-2",
+          name: "Dental Crown Installation",
+          date: "2025-04-22",
+          amount: "$1200",
+        },
+        {
+          id: "6-3",
+          name: "Regular Checkup & Cleaning",
+          date: "2025-05-01",
+          amount: "$150",
+        }
+      ],
+      paymentHistory: [
+        {
+          id: "6-1",
+          name: "Teeth Whitening",
+          date: "2025-03-22",
+          amount: "$500",
+          receiptUrl: "/receipts/6-1"
+        },
+        {
+          id: "6-2",
+          name: "Regular Checkup",
+          date: "2025-02-03",
+          amount: "$150",
+          receiptUrl: "/receipts/6-2"
+        },
+        {
+          id: "6-3",
+          name: "Cavity Filling",
+          date: "2025-01-16",
+          amount: "$250",
+          receiptUrl: "/receipts/6-3"
+        }
+      ]
     },
   },
   {
@@ -299,7 +475,7 @@ export const recordsData = [
         policyNumber: "DCP123456789",
         expiryDate: "2025-12-31",
       },
-      date: "2023-11-07",
+      date: "2025-4-07",
       purposeOfVisit: "Regular Checkup",
       provider: "Dr. Michael Lee, DDS",
       practice: "SmileBright Dental, Chicago, IL",
@@ -351,9 +527,53 @@ export const recordsData = [
     },
     billing: {
       totalCost: "$150",
-      insuranceClaim: "Submitted on 2023-11-07, approved",
-      patientPayment: "$20 copay",
+      insuranceCovered: "$100",
+      outOfPocket: "$50",
       outstandingBalance: "$0",
+      insuranceClaimStatus: "Submitted on 2023-11-07, approved",
+      upcomingBills: [
+        {
+          id: "5-1",
+          name: "Root Canal Treatment",
+          date: "2025-04-15",
+          amount: "$850",
+        },
+        {
+          id: "5-2",
+          name: "Dental Crown Installation",
+          date: "2025-04-22",
+          amount: "$1200",
+        },
+        {
+          id: "5-3",
+          name: "Regular Checkup & Cleaning",
+          date: "2025-05-01",
+          amount: "$150",
+        }
+      ],
+      paymentHistory: [
+        {
+          id: "5-1",
+          name: "Teeth Whitening",
+          date: "2025-03-22",
+          amount: "$500",
+          receiptUrl: "/receipts/5-1"
+        },
+        {
+          id: "5-2",
+          name: "Regular Checkup",
+          date: "2025-02-03",
+          amount: "$150",
+          receiptUrl: "/receipts/5-2"
+        },
+        {
+          id: "5-3",
+          name: "Cavity Filling",
+          date: "2025-01-16",
+          amount: "$250",
+          receiptUrl: "/receipts/5-3"
+        }
+      ]
     },
   },
   {
@@ -419,9 +639,53 @@ export const recordsData = [
     },
     billing: {
       totalCost: "$500",
-      insuranceClaim: "Submitted on 2023-06-30, approved",
-      patientPayment: "$500",
+      insuranceCovered: "$400",
+      outOfPocket: "$100",
       outstandingBalance: "$0",
+      insuranceClaimStatus: "Submitted on 2023-06-30, approved",
+      upcomingBills: [
+        {
+          id: "4-1",
+          name: "Root Canal Treatment",
+          date: "2025-04-15",
+          amount: "$850",
+        },
+        {
+          id: "4-2",
+          name: "Dental Crown Installation",
+          date: "2025-04-22",
+          amount: "$1200",
+        },
+        {
+          id: "4-3",
+          name: "Regular Checkup & Cleaning",
+          date: "2025-05-01",
+          amount: "$150",
+        }
+      ],
+      paymentHistory: [
+        {
+          id: "4-1",
+          name: "Teeth Whitening",
+          date: "2025-03-22",
+          amount: "$500",
+          receiptUrl: "/receipts/4-1"
+        },
+        {
+          id: "4-2",
+          name: "Regular Checkup",
+          date: "2025-02-03",
+          amount: "$150",
+          receiptUrl: "/receipts/4-2"
+        },
+        {
+          id: "4-3",
+          name: "Cavity Filling",
+          date: "2025-01-16",
+          amount: "$250",
+          receiptUrl: "/receipts/4-3"
+        }
+      ]
     },
   },
   {
@@ -435,7 +699,7 @@ export const recordsData = [
         policyNumber: "DCP123456789",
         expiryDate: "2025-12-31",
       },
-      date: "2023-02-14",
+      date: "2025-05-14",
       purposeOfVisit: "Regular Checkup",
       provider: "Dr. Sarah Johnson, DDS",
       practice: "SmileBright Dental, Chicago, IL",
@@ -487,9 +751,53 @@ export const recordsData = [
     },
     billing: {
       totalCost: "$100",
-      insuranceClaim: "Submitted on 2023-02-14, approved",
-      patientPayment: "$20 copay",
+      insuranceCovered: "$80",
+      outOfPocket: "$20",
       outstandingBalance: "$0",
+      insuranceClaimStatus: "Submitted on 2023-02-14, approved",
+      upcomingBills: [
+        {
+          id: "3-1",
+          name: "Root Canal Treatment",
+          date: "2025-04-15",
+          amount: "$850",
+        },
+        {
+          id: "3-2",
+          name: "Dental Crown Installation",
+          date: "2025-04-22",
+          amount: "$1200",
+        },
+        {
+          id: "3-3",
+          name: "Regular Checkup & Cleaning",
+          date: "2025-05-01",
+          amount: "$150",
+        }
+      ],
+      paymentHistory: [
+        {
+          id: "3-1",
+          name: "Teeth Whitening",
+          date: "2025-03-22",
+          amount: "$500",
+          receiptUrl: "/receipts/3-1"
+        },
+        {
+          id: "3-2",
+          name: "Regular Checkup",
+          date: "2025-02-03",
+          amount: "$150",
+          receiptUrl: "/receipts/3-2"
+        },
+        {
+          id: "3-3",
+          name: "Cavity Filling",
+          date: "2025-01-16",
+          amount: "$250",
+          receiptUrl: "/receipts/3-3"
+        }
+      ]
     },
   },
   {
@@ -555,9 +863,53 @@ export const recordsData = [
     },
     billing: {
       totalCost: "$150",
-      insuranceClaim: "Submitted on 2022-09-05, approved",
-      patientPayment: "$50 copay",
+      insuranceCovered: "$100",
+      outOfPocket: "$50",
       outstandingBalance: "$0",
+      insuranceClaimStatus: "Submitted on 2022-09-05, approved",
+      upcomingBills: [
+        {
+          id: "2-1",
+          name: "Root Canal Treatment",
+          date: "2025-04-15",
+          amount: "$850",
+        },
+        {
+          id: "2-2",
+          name: "Dental Crown Installation",
+          date: "2025-04-22",
+          amount: "$1200",
+        },
+        {
+          id: "2-3",
+          name: "Regular Checkup & Cleaning",
+          date: "2025-05-01",
+          amount: "$150",
+        }
+      ],
+      paymentHistory: [
+        {
+          id: "2-1",
+          name: "Teeth Whitening",
+          date: "2025-03-22",
+          amount: "$500",
+          receiptUrl: "/receipts/2-1"
+        },
+        {
+          id: "2-2",
+          name: "Regular Checkup",
+          date: "2025-02-03",
+          amount: "$150",
+          receiptUrl: "/receipts/2-2"
+        },
+        {
+          id: "2-3",
+          name: "Cavity Filling",
+          date: "2025-01-16",
+          amount: "$250",
+          receiptUrl: "/receipts/2-3"
+        }
+      ]
     },
   },
   {
@@ -571,7 +923,7 @@ export const recordsData = [
         policyNumber: "DCP123456789",
         expiryDate: "2025-12-31",
       },
-      date: "2022-05-01",
+      date: "2025-06-01",
       purposeOfVisit: "Initial Consultation",
       provider: "Dr. Emily Carter, DDS",
       practice: "SmileBright Dental, Chicago, IL",
@@ -623,12 +975,58 @@ export const recordsData = [
     },
     billing: {
       totalCost: "$200",
-      insuranceClaim: "Submitted on 2022-05-01, approved",
-      patientPayment: "$50 copay",
+      insuranceCovered: "$150",
+      outOfPocket: "$50",
       outstandingBalance: "$0",
+      insuranceClaimStatus: "Submitted on 2022-05-01, approved",
+      upcomingBills: [
+        {
+          id: "1-1",
+          name: "Root Canal Treatment",
+          date: "2025-04-15",
+          amount: "$850",
+        },
+        {
+          id: "1-2",
+          name: "Dental Crown Installation",
+          date: "2025-04-22",
+          amount: "$1200",
+        },
+        {
+          id: "1-3",
+          name: "Regular Checkup & Cleaning",
+          date: "2025-05-01",
+          amount: "$150",
+        }
+      ],
+      paymentHistory: [
+        {
+          id: "1-1",
+          name: "Teeth Whitening",
+          date: "2025-03-22",
+          amount: "$500",
+          receiptUrl: "/receipts/1-1"
+        },
+        {
+          id: "1-2",
+          name: "Regular Checkup",
+          date: "2025-02-03",
+          amount: "$150",
+          receiptUrl: "/receipts/1-2"
+        },
+        {
+          id: "1-3",
+          name: "Cavity Filling",
+          date: "2025-01-16",
+          amount: "$250",
+          receiptUrl: "/receipts/1-3"
+        }
+      ]
     },
   },
 ]
+
+
 
 export default function DetailedRecordView({recordId, patientId}) {
   const searchParams = useSearchParams()
@@ -880,16 +1278,20 @@ export default function DetailedRecordView({recordId, patientId}) {
             <dd className="text-sm sm:text-base">{record.billing.totalCost}</dd>
           </div>
           <div>
-            <dt className="font-semibold text-sm sm:text-base">Insurance Claim</dt>
-            <dd className="text-sm sm:text-base">{record.billing.insuranceClaim}</dd>
+            <dt className="font-semibold text-sm sm:text-base">Insurance Covered</dt>
+            <dd className="text-sm sm:text-base">{record.billing.insuranceCovered}</dd>
           </div>
           <div>
-            <dt className="font-semibold text-sm sm:text-base">Patient Payment</dt>
-            <dd className="text-sm sm:text-base">{record.billing.patientPayment}</dd>
+            <dt className="font-semibold text-sm sm:text-base">Out of Pocket</dt>
+            <dd className="text-sm sm:text-base">{record.billing.outOfPocket}</dd>
           </div>
           <div>
             <dt className="font-semibold text-sm sm:text-base">Outstanding Balance</dt>
             <dd className="text-sm sm:text-base">{record.billing.outstandingBalance}</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-sm sm:text-base">Insurance Claim Status</dt>
+            <dd className="text-sm sm:text-base">{record.billing.insuranceClaimStatus}</dd>
           </div>
         </dl>
       )

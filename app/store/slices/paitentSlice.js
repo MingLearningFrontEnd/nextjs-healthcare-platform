@@ -21,11 +21,11 @@ const convertToFHIR = (data) => {
         use: "official",
       },
     ],
-    gender: data.Gender?.toLowerCase() || "unknown",  
-    birthDate: data.Birthdate || "unknown",  
+    gender: data.Gender?.toLowerCase() || "unknown",
+    birthDate: data.Birthdate || "unknown",
     address: [
       {
-        line: [data.Address || "", data.Address2 || ""], 
+        line: [data.Address || "", data.Address2 || ""],
         city: data.City || "Unknown",
         state: data.State || "Unknown",
         postalCode: data.Zip || "Unknown",
@@ -36,7 +36,7 @@ const convertToFHIR = (data) => {
       { system: "email", value: data.Email || "Unknown", use: "home" },
     ],
     maritalStatus: {
-      text: data.Position || "Unknown", 
+      text: data.Position || "Unknown",
     },
     communication: [
       {
@@ -59,7 +59,7 @@ export const fetchPatientData = createAsyncThunk(
     //     headers: {
     //       'Content-Type':'application/json',
     //       'x-api-key':API_KEY,
-          
+
     //     }
     //   })
     //   if (!response.ok) {
@@ -73,12 +73,12 @@ export const fetchPatientData = createAsyncThunk(
     //   return rejectWithValue(error.message);
     // }
 
-   // mock data
+    // mock data
     const response = await new Promise((resolve) =>
       setTimeout(() => {
-        resolve( {
+        resolve({
           resourceType: "Patient",
-          id:15,
+          id: 15,
           name: [
             {
               family: "Liu",
@@ -88,6 +88,7 @@ export const fetchPatientData = createAsyncThunk(
           ],
           gender: "male",
           birthDate: "2000-05-14",
+          SSN:"",
           address: [
             {
               line: ["125 Satin Heights", ""],
@@ -112,6 +113,17 @@ export const fetchPatientData = createAsyncThunk(
               },
             },
           ],
+          emergencyContact: {
+            emergencyContactName: "",
+            relation: "",
+            phoneNumber: ""
+          },
+          insuranceInfo:{
+            provider:"",
+            policyNumber:"",
+            GroupNumber:"",
+            expirDate:"",
+          }
         });
       }, 1000) // 模拟 1 秒延迟
     );

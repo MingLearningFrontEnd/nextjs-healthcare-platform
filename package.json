@@ -42,6 +42,7 @@
     "@reduxjs/toolkit": "^2.5.1",
     "@use-gesture/react": "latest",
     "autoprefixer": "^10.4.20",
+    "axios": "^1.8.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "1.0.4",
@@ -67,6 +68,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-dom": "^18",

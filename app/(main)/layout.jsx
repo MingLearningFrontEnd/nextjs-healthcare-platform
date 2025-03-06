@@ -20,7 +20,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 
-export default function MarketingLayout({
+export default function MainLayout({
   children,
 }) {
   return (

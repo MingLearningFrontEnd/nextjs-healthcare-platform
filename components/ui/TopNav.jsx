@@ -6,17 +6,24 @@ import whiteLogo from '../../public/assets/Oris_Logo_White.png'
 import signOut from '../../public/assets/Sign Out.png'
 import { fetchPatientData } from '@/app/store/slices/paitentSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchProviderData } from '@/app/store/slices/providerSlice';
 
 const TopNav = () => {
     const dispatch = useDispatch();
     const { patient, loading, error } = useSelector((state) => state.patientSlice);
+    const { provider } = useSelector((state) => state.providerSlice);
+    
     const patientId = patient?.id || '1';
-
+    const providerId = provider?.id || '1';
+    
     useEffect(() => {
         if (patientId) {
             dispatch(fetchPatientData(patientId));
         }
-    }, [dispatch, patientId]);
+        if (providerId) {
+            dispatch(fetchProviderData(providerId));
+        }
+    }, [dispatch, patientId, providerId]);
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -66,9 +73,10 @@ const TopNav = () => {
                     {[
                         { name: "Home", path: "/" },
                         { name: "About", path: "/about" },
-                        { name: "Insurance", path: "/insurance" },
-                        { name: "Your Team", path: "/yourteam" },
-                        ...(patientId ? [{ name: "Patient", path: `/patient-portal/${patientId}` }] : [])
+                        { name: "Insurance", path: `/patient-portal/${patientId}/insurance` },
+                        { name: "Your Team", path: `/patient-portal/${patientId}/your-team` },
+                        ...(providerId ? [{ name: "Providers", path: `/provider-portal/${providerId}` }] : []),
+                        ...(patientId ? [{ name: "Patients", path: `/patient-portal/${patientId}` }] : [])
                     ].map((item) => (
                         <Link
                             key={item.name}

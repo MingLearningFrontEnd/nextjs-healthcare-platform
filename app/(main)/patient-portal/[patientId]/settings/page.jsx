@@ -15,8 +15,9 @@ import { useSelector } from 'react-redux';
 export default function SettingsPage({params}) {
   const router = useRouter()
   const {patientId} = params
-  const [profileImage, setProfileImage] = useState("/placeholder.svg")
   const {patient} = useSelector((state) => state.patientSlice);
+  const [profileImage, setProfileImage] = useState("/placeholder.svg")
+  
 
  
   const handleImageUpload = (event) => {
@@ -43,11 +44,8 @@ export default function SettingsPage({params}) {
     <div className="min-h-screen bg-transparent">
       <PatientBanner  />
       <main className="container mx-auto py-20">
-        <div className="flex justify-between items-center mb-6">
+        <div className="mb-10">
           <h1 className="text-3xl font-bold">Account Settings</h1>
-          <Button variant="outline" className='bg-[#D9D9D9]' onClick={() => router.push(`/patient-portal/${patientId}`)}>
-            <ArrowLeft className="mr-2 h-4 w-4  " /> Back to Portal
-          </Button>
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">
           <Card className="shadow-all">

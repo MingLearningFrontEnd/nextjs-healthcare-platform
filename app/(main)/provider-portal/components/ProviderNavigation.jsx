@@ -1,22 +1,20 @@
-import Link from "next/link";
-import { Settings, Pill, FileImage, CreditCard, Menu,AppWindow } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Link from "next/link"
+import { Settings, Users, BarChart, Menu, LayoutDashboard } from "lucide-react"
+import { Button } from "@/components/ui/button"
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
-
-export default function Navigation({ patientId }) {
+export default function ProviderNavigation({ providerId }) {
   const navItems = [
-    { icon: AppWindow, label: "Dashboard", href: `/patient-portal/${patientId}` },
-    { icon: Pill, label: "Medications", href: `/patient-portal/${patientId}/medications` },
-    { icon: FileImage, label: "Imaging", href: "/imaging" },
-    { icon: CreditCard, label: "Billing", href: `/patient-portal/${patientId}/billing` },
-    { icon: Settings, label: "Settings", href: `/patient-portal/${patientId}/settings` },
-  ];
+    { icon: LayoutDashboard, label: "Dashboard", href: `/provider-portal/${providerId}` },
+    { icon: BarChart, label: "Analytics", href: `/provider-portal/${providerId}/analytics`},
+    { icon: Users, label: "Patients", href: `/provider-portal/${providerId}/patients` },
+    { icon: Settings, label: "Settings", href: `/provider-portal/${providerId}/settings` },
+  ]
 
   return (
     <nav className="pt-5">
@@ -50,3 +48,4 @@ export default function Navigation({ patientId }) {
     </nav>
   );
 }
+
