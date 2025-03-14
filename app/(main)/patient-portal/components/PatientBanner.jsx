@@ -20,7 +20,7 @@ export default function PatientBanner() {
     <Card className="rounded-sm w-full bg-white border-0 border-b-2 border-black relative  ">
       <CardContent className="relative flex flex-col sm:flex-row items-center sm:items-start justify-between p-4 sm:p-5 pt-8 sm:pt-6 gap-4">
         {/* 头像 */}
-        <div className="absolute top-[5%] sm:top-[20px] left-1/2 sm:left-6 transform -translate-x-1/2 sm:translate-x-0 z-10">
+        <div className="absolute top-[5%] sm:top-[20px] left-1/2 sm:left-6 transform -translate-x-1/2 sm:translate-x-0 z-0">
           <div className="relative w-24 h-24 pt-2 sm:w-28 sm:h-28 flex items-center justify-center">
             <ProfileWheel className="absolute z-0  scale-75  " />
             <Image

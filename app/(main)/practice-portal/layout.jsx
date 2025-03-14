@@ -2,7 +2,7 @@ import bgColor from '@/public/assets/Color_Gradient_Baackground.png'
 
 
 
-export default function ProviderLayout({
+export default function PracticeLayout({
   children,
 }) {
   return (

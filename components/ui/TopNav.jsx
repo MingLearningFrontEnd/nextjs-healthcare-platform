@@ -7,8 +7,10 @@ import signOut from '../../public/assets/Sign Out.png'
 import { fetchPatientData } from '@/app/store/slices/paitentSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProviderData } from '@/app/store/slices/providerSlice';
+import { useRouter } from 'next/navigation';
 
 const TopNav = () => {
+    const router = useRouter();
     const dispatch = useDispatch();
     const { patient, loading, error } = useSelector((state) => state.patientSlice);
     const { provider } = useSelector((state) => state.providerSlice);
@@ -31,15 +33,18 @@ const TopNav = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const handleNavClick = (path) => {
+        router.push(path);
+        setIsMenuOpen(false);
+    };
 
-    
-      if (error) {
+    if (error) {
         return <div className="min-h-screen ">Error: {error}</div>;
-      }
+    }
 
     return (
-        <div className=''>
-            <nav className="relative bg-[#121212] text-white h-12 px-5 flex items-center justify-between mt-8 z-10">
+        <div className='relative z-50'>
+            <nav className="relative bg-[#121212] text-white h-12 px-5 flex items-center justify-between mt-8">
                 {/* Logo */}
                 <div className="text-xl font-bold w-2/12">
                     <Image src={whiteLogo} alt="Logo" width={150} className="absolute top-0 transform -translate-y-2.5" />
@@ -67,8 +72,9 @@ const TopNav = () => {
 
                 {/* Navigation Menu */}
                 <div
-                    className={`absolute bg-[#121212] top-16 left-0 w-full md:static md:w-auto md:flex sm:space-x-2 md:space-x-4 lg:space-x-6 transition-all duration-300 ${isMenuOpen ? 'block' : 'hidden'
-                        } md:block z-50`}
+                    className={`absolute bg-[#121212] top-16 left-0 w-full md:static md:w-auto md:flex sm:space-x-2 md:space-x-4 lg:space-x-6 transition-all duration-300 ${
+                        isMenuOpen ? 'block' : 'hidden'
+                    } md:block z-50`}
                 >
                     {[
                         { name: "Home", path: "/" },
@@ -78,13 +84,13 @@ const TopNav = () => {
                         ...(providerId ? [{ name: "Providers", path: `/provider-portal/${providerId}` }] : []),
                         ...(patientId ? [{ name: "Patients", path: `/patient-portal/${patientId}` }] : [])
                     ].map((item) => (
-                        <Link
+                        <div
                             key={item.name}
-                            href={item.path}
-                            className="block xs:pl-3 md:px-0 lg:px-3 py-2 text-base sm:text-sm md:text-base lg:text-[17px] md:inline transition-all duration-200 hover:bg-gray-800 active:border-2 active:border-[#360984] rounded-lg"
+                            onClick={() => handleNavClick(item.path)}
+                            className="block xs:pl-3 md:px-0 lg:px-3 py-2 text-base sm:text-sm md:text-base lg:text-[17px] md:inline transition-all duration-200 hover:bg-gray-800 active:border-2 active:border-[#360984] rounded-lg cursor-pointer"
                         >
                             {item.name}
-                        </Link>
+                        </div>
                     ))}
 
                     {/* Small Screen Buttons */}
@@ -103,7 +109,6 @@ const TopNav = () => {
                 </div>
             </nav>
         </div>
-
     );
 };
 
