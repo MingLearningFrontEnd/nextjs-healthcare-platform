@@ -24,6 +24,7 @@ export default function LoginPage() {
   // 如果已经认证，跳转到对应页面
   useEffect(() => {
     if (isAuthenticated && user) {
+      console.log('Login successful, user info:', user);
       // 根据用户角色跳转到不同页面
       if (user.role === 'patient') {
         router.push(`/patient-portal/${user.userId}`)
@@ -56,6 +57,7 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log('Submitting login info:', formData);
     dispatch(loginUser(formData))
   }
   
@@ -65,6 +67,16 @@ export default function LoginPage() {
         <CardHeader className="text-center p-0">
           <h2 className="text-3xl sm:text-4xl font-bold text-black mb-2">Login</h2>
           <p className="text-gray-600 text-base sm:text-lg">Please enter your account information</p>
+          <p className="text-xs text-gray-500 mt-2">
+            Test Account: patient@test.com / patient123
+          </p>
+          <p className="text-xs text-gray-500 mt-2">
+          Test Account: provider@test.com / provider123
+          </p>
+          <p className="text-xs text-gray-500 mt-2">
+          Test Account: practice@test.com / practice123
+
+          </p>
         </CardHeader>
 
         <hr className="my-6 border-gray-300" />
@@ -113,7 +125,7 @@ export default function LoginPage() {
             
             <div className="text-center mt-4">
               <p className="text-gray-600">
-                Don't have an account? 
+                Don't have an account?
                 <Link href="/signup" className="text-[#4F46E5] ml-1 hover:underline">
                   Sign up
                 </Link>
