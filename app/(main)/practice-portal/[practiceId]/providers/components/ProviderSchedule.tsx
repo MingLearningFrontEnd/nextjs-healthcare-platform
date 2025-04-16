@@ -36,7 +36,7 @@ export default function ProviderSchedule({ provider }: ProviderScheduleProps) {
 
   const handleDayToggle = (day: string) => {
     if (workingDays.includes(day)) {
-      setWorkingDays(workingDays.filter((d) => d !== day))
+      setWorkingDays(workingDays.filter((d: string) => d !== day))
     } else {
       setWorkingDays([...workingDays, day])
     }
