@@ -42,7 +42,6 @@ export default function SettingsPage({params}) {
  
   return (
     <div className="min-h-screen bg-transparent">
-      <PatientBanner  />
       <main className="container mx-auto py-20">
         <div className="mb-10">
           <h1 className="text-3xl font-bold">Account Settings</h1>
@@ -140,15 +139,28 @@ export default function SettingsPage({params}) {
             <CardContent className="grid gap-4 sm:grid-cols-2 p-0">
               <div className="space-y-2">
                 <Label htmlFor="emergency-name" className="font-bold text-[14px]">Name</Label>
-                <Input id="emergency-name" placeholder="Jane Doe" className="shadow-all"/>
+                <Input 
+                  id="emergency-name" 
+                  placeholder={patient?.contact?.[0]?.name || ""}
+                  className="shadow-all"
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="emergency-relation" className="font-bold text-[14px]">Relation</Label>
-                <Input id="emergency-relation" placeholder="Spouse"  className="shadow-all"/>
+                <Input 
+                  id="emergency-relation" 
+                  placeholder={patient?.contact?.[0]?.relationship || ""} 
+                  className="shadow-all"
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="emergency-phone" className="font-bold text-[14px]">Phone Number</Label>
-                <Input id="emergency-phone" type="tel" placeholder="(123) 456-7890" className="shadow-all" />
+                <Input 
+                  id="emergency-phone" 
+                  type="tel" 
+                  placeholder={patient?.contact?.[0]?.telecom?.[0]?.value || ""} 
+                  className="shadow-all" 
+                />
               </div>
             </CardContent>
           </Card>
@@ -160,19 +172,36 @@ export default function SettingsPage({params}) {
             <CardContent className="grid gap-4 sm:grid-cols-2 p-0">
               <div className="space-y-2">
                 <Label htmlFor="insurance-provider" className="font-bold text-[14px]">Provider</Label>
-                <Input id="insurance-provider" placeholder="HealthCare Inc." className="shadow-all" />
+                <Input 
+                  id="insurance-provider" 
+                  placeholder={patient?.insurance?.[0]?.provider || ""} 
+                  className="shadow-all" 
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="policy-number" className="font-bold text-[14px]">Policy Number</Label>
-                <Input id="policy-number" placeholder="123456789" className="shadow-all"  />
+                <Input 
+                  id="policy-number" 
+                  placeholder={patient?.insurance?.[0]?.policyNumber || ""} 
+                  className="shadow-all" 
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="group-number" className="font-bold text-[14px]">Group Number</Label>
-                <Input id="group-number" placeholder="GRP12345"  className="shadow-all"/>
+                <Input 
+                  id="group-number" 
+                  placeholder={patient?.insurance?.[0]?.groupNumber || ""} 
+                  className="shadow-all"
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="expiration-date" className="font-bold text-[14px]">Expiration Date</Label>
-                <Input id="expiration-date" type="date"className="shadow-all"/>
+                <Input 
+                  id="expiration-date" 
+                  type="date" 
+                  defaultValue={patient?.insurance?.[0]?.expirationDate || ""}
+                  className="shadow-all"
+                />
               </div>
             </CardContent>
           </Card>

@@ -11,7 +11,6 @@ export default function RecordPage() {
 
   return (
     <div className="min-h-screen ">
-      <PatientBanner />
       <main className="container mx-auto p-4 pb-20">
         <div className=' mt-20 mb-10 '>
           <h2 className="text-3xl font-bold ">Dental Records</h2>

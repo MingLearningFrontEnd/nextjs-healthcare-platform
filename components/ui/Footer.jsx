@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Vector from '../../public/assets/Vector.svg';
-import blackLogo from '../../public/assets/Oris_Logo_Black.png';
+import blackLogo from '../../public/assets/Oris_Logo_Black1.png';
 
 const Footer = () => {
   return (
@@ -19,7 +19,7 @@ const Footer = () => {
           <span className="mr-2">
             <Vector className="w-5 h-5" />
           </span>
-          SmileConnect, Inc. All rights reserved
+          DEMO, Inc. All rights reserved
         </div>
 
         {/* 中间导航链接（小屏幕换行，大屏幕水平排列） */}

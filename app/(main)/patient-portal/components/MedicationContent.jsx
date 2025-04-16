@@ -3,10 +3,38 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button";
-import { EllipsisVertical, Plus } from "lucide-react";
+import { EllipsisVertical, Plus, CheckCircle2, XCircle } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, DropdownMenuLabel } from "@/components/ui/dropdown-menu";
+import { useState } from "react";
 
 const MedicationContent = ({medications,onEdit,onDelete,onAddNew}) => {
+    const [trackedMedications, setTrackedMedications] = useState([]);
+
+    const handleAddToTracker = (medication) => {
+        setTrackedMedications(prev => {
+            // 检查是否已经存在
+            if (prev.some(m => m.name === medication.name)) {
+                return prev;
+            }
+            return [...prev, {
+                ...medication,
+                taken: false,
+                time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            }];
+        });
+    };
+
+    const handleToggleTaken = (index) => {
+        setTrackedMedications(prev => {
+            const updated = [...prev];
+            updated[index] = {
+                ...updated[index],
+                taken: !updated[index].taken
+            };
+            return updated;
+        });
+    };
+
     return (
         <div className="container mx-auto py-8">
             <div className="rounded-sm sm:p-6">
@@ -39,7 +67,34 @@ const MedicationContent = ({medications,onEdit,onDelete,onAddNew}) => {
                         </TabsList>
 
                         <TabsContent value="tracker">
-                            {/* Daily Tracker content will go here */}
+                            <div className="bg-white rounded-lg shadow-all p-6">
+                                <h3 className="text-xl font-semibold mb-4">Today's Medications</h3>
+                                {trackedMedications.length === 0 ? (
+                                    <p className="text-gray-500 text-center py-8">No medications added to tracker yet</p>
+                                ) : (
+                                    <div className="space-y-4">
+                                        {trackedMedications.map((med, index) => (
+                                            <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
+                                                <div className="flex-1">
+                                                    <h4 className="font-medium">{med.name}</h4>
+                                                    <p className="text-sm text-gray-500">{med.dosage}</p>
+                                                </div>
+                                                <div className="flex items-center gap-4">
+                                                    <span className="text-sm text-gray-500">{med.time}</span>
+                                                    <Button
+                                                        variant="ghost"
+                                                        size="icon"
+                                                        onClick={() => handleToggleTaken(index)}
+                                                        className={med.taken ? "text-green-500" : "text-gray-400"}
+                                                    >
+                                                        {med.taken ? <CheckCircle2 className="h-6 w-6" /> : <XCircle className="h-6 w-6" />}
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
                         </TabsContent>
 
                         <TabsContent value="list">
@@ -84,10 +139,7 @@ const MedicationContent = ({medications,onEdit,onDelete,onAddNew}) => {
                                                                 <TableCell>
                                                                     <DropdownMenu>
                                                                         <DropdownMenuTrigger asChild>
-                                                                            <Button
-                                                                                variant="ghost"
-                                                                                className="h-8 w-8 p-0 hover:bg-gray-100"
-                                                                            >
+                                                                            <Button variant="ghost" className="h-8 w-8 p-0">
                                                                                 <EllipsisVertical className="h-4 w-4" />
                                                                             </Button>
                                                                         </DropdownMenuTrigger>
@@ -101,7 +153,7 @@ const MedicationContent = ({medications,onEdit,onDelete,onAddNew}) => {
                                                                             })}>
                                                                                 Edit
                                                                             </DropdownMenuItem>
-                                                                            <DropdownMenuItem disabled>
+                                                                            <DropdownMenuItem onClick={() => handleAddToTracker(med)}>
                                                                                 Add to Daily Tracker
                                                                             </DropdownMenuItem>
                                                                             <DropdownMenuSeparator />
@@ -163,10 +215,7 @@ const MedicationContent = ({medications,onEdit,onDelete,onAddNew}) => {
                                                                 <TableCell>
                                                                     <DropdownMenu>
                                                                         <DropdownMenuTrigger asChild>
-                                                                            <Button
-                                                                                variant="ghost"
-                                                                                className="h-8 w-8 p-0 hover:bg-gray-100"
-                                                                            >
+                                                                            <Button variant="ghost" className="h-8 w-8 p-0">
                                                                                 <EllipsisVertical className="h-4 w-4" />
                                                                             </Button>
                                                                         </DropdownMenuTrigger>
@@ -180,7 +229,7 @@ const MedicationContent = ({medications,onEdit,onDelete,onAddNew}) => {
                                                                             })}>
                                                                                 Edit
                                                                             </DropdownMenuItem>
-                                                                            <DropdownMenuItem disabled>
+                                                                            <DropdownMenuItem onClick={() => handleAddToTracker(med)}>
                                                                                 Add to Daily Tracker
                                                                             </DropdownMenuItem>
                                                                             <DropdownMenuSeparator />

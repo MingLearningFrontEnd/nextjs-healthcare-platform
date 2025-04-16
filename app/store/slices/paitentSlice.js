@@ -1,151 +1,188 @@
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-const API_BASE_URL = "https://7dg2llc8kl.execute-api.us-east-1.amazonaws.com/dev";
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
-
+// 模拟数据
+const mockPatients = {
+  '2': {
+    id: '2',
+    first_name: 'John',
+    last_name: 'Doe',
+    email: 'john.doe@example.com',
+    bio: {
+      gender: 'male',
+      date_of_birth: '1980-01-01',
+      address_line_1: '123 Main St',
+      address_line_2: 'Apt 4B',
+      city: 'New York',
+      state: 'NY',
+      zip_code: '10001',
+      home_phone_number: '(555) 123-4567',
+      cell_phone_number: '(555) 987-6543',
+      work_phone_number: '(555) 456-7890',
+      emergency_contact_name: 'Jane Doe',
+      emergency_contact_relation: 'Spouse',
+      emergency_contact_phone: '(555) 789-0123'
+    },
+    insurance: {
+      provider: 'Blue Cross',
+      policy_number: 'BC123456789',
+      group_number: 'GRP987654',
+      expiration_date: '2024-12-31'
+    },
+    preferred_language: 'English',
+    balance: { amount: '150.00', currency: 'USD' },
+    chart_id: 'CHART001',
+    billing_type: 'Standard',
+    inactive: false
+  },
+  '3': {
+    id: '3',
+    first_name: 'Jane',
+    last_name: 'Smith',
+    email: 'jane.smith@example.com',
+    bio: {
+      gender: 'female',
+      date_of_birth: '1985-05-15',
+      address_line_1: '456 Oak Ave',
+      address_line_2: '',
+      city: 'Los Angeles',
+      state: 'CA',
+      zip_code: '90001',
+      home_phone_number: '(555) 234-5678',
+      cell_phone_number: '(555) 876-5432',
+      work_phone_number: '(555) 345-6789',
+      emergency_contact_name: 'John Smith',
+      emergency_contact_relation: 'Spouse',
+      emergency_contact_phone: '(555) 678-9012'
+    },
+    insurance: {
+      provider: 'Aetna',
+      policy_number: 'AE987654321',
+      group_number: 'GRP123456',
+      expiration_date: '2024-12-31'
+    },
+    preferred_language: 'English',
+    balance: { amount: '75.50', currency: 'USD' },
+    chart_id: 'CHART002',
+    billing_type: 'Premium',
+    inactive: false
+  }
+};
 
 const convertToFHIR = (data) => {
   if (!data || typeof data !== "object") {
     return { error: "Invalid data input" };
-
   }
 
   return {
     resourceType: "Patient",
-    id: data.PatNum || "unknown",
+    id: data.id || "unknown",
     name: [
       {
-        family: data.LName || "Unknown",
-        given: [data.FName || "Unknown", data.MiddleI || ""],
+        family: data.last_name || "Unknown",
+        given: [data.first_name || "Unknown", data.middle_name || ""],
         use: "official",
       },
     ],
-    gender: data.Gender?.toLowerCase() || "unknown",
-    birthDate: data.Birthdate || "unknown",
+    gender: data.bio?.gender?.toLowerCase() || "unknown",
+    birthDate: data.bio?.date_of_birth || "unknown",
     address: [
       {
-        line: [data.Address || "", data.Address2 || ""],
-        city: data.City || "Unknown",
-        state: data.State || "Unknown",
-        postalCode: data.Zip || "Unknown",
+        line: [
+          data.bio?.address_line_1 || "",
+          data.bio?.address_line_2 || ""
+        ],
+        city: data.bio?.city || "Unknown",
+        state: data.bio?.state || "Unknown",
+        postalCode: data.bio?.zip_code || "Unknown",
       },
     ],
     telecom: [
-      { system: "phone", value: data.HmPhone || "Unknown", use: "home" },
-      { system: "email", value: data.Email || "Unknown", use: "home" },
+      { 
+        system: "phone", 
+        value: data.bio?.home_phone_number || "Unknown", 
+        use: "home" 
+      },
+      { 
+        system: "phone", 
+        value: data.bio?.cell_phone_number || "Unknown", 
+        use: "mobile" 
+      },
+      { 
+        system: "phone", 
+        value: data.bio?.work_phone_number || "Unknown", 
+        use: "work" 
+      },
+      { 
+        system: "email", 
+        value: data.email || "Unknown", 
+        use: "home" 
+      },
     ],
     maritalStatus: {
-      text: data.Position || "Unknown",
+      text: "Unknown",
     },
     communication: [
       {
         language: {
-          text: data.Language || "English",
+          text: data.preferred_language || "English",
         },
       },
     ],
+    emergencyContact: {
+      emergencyContactName: data.bio?.emergency_contact_name || "",
+      relation: data.bio?.emergency_contact_relation || "",
+      phoneNumber: data.bio?.emergency_contact_phone || ""
+    },
+    insuranceInfo: {
+      provider: data.insurance?.provider || "",
+      policyNumber: data.insurance?.policy_number || "",
+      GroupNumber: data.insurance?.group_number || "",
+      expirDate: data.insurance?.expiration_date || "",
+    },
+    balance: data.balance || { amount: "0.00", currency: "USD" },
+    chartId: data.chart_id || null,
+    billingType: data.billing_type || "Standard",
+    inactive: data.inactive || false
   };
 };
 
 // async Thunk middleware to process async operation in redux 
+
 export const fetchPatientData = createAsyncThunk(
   'patientSlice/fetchPatientData',
   async (patientId, { rejectWithValue }) => {
-    // try {
-    //   const response = await fetch(`${API_BASE_URL}//patients/${patientId}`,
-    //   {
-    //     method: 'GET',
-    //     headers: {
-    //       'Content-Type':'application/json',
-    //       'x-api-key':API_KEY,
+    try {
+      // 使用模拟数据
+      if (!patientId || !mockPatients[patientId]) {
+        throw new Error('Invalid patient ID');
+      }
 
-    //     }
-    //   })
-    //   if (!response.ok) {
-    //     throw new Error(`Error: ${response.status} ${response.statusText}`);
-    //   }
-    //   const responseData = await response.json();
-    //   const data = responseData.body
-    //   console.log(data)
-    //   return data;
-    // } catch (error) {
-    //   return rejectWithValue(error.message);
-    // }
-
-    // mock data
-    const response = await new Promise((resolve) =>
-      setTimeout(() => {
-        resolve({
-          resourceType: "Patient",
-          id: 15,
-          name: [
-            {
-              family: "Liu",
-              given: ["Mingjie", ""],
-              use: "official",
-            },
-          ],
-          gender: "male",
-          birthDate: "2000-05-14",
-          SSN:"",
-          address: [
-            {
-              line: ["125 Satin Heights", ""],
-              city: "Greensboro",
-              state: "NC",
-              postalCode: "05698",
-            },
-          ],
-          telecom: [
-            { system: "phone", value: "(536)624-5871", use: "home" },
-            { system: "phone", value: "(536)265-8587", use: "work" },
-            { system: "phone", value: "(536)987-5621", use: "mobile" },
-            { system: "email", value: "mjliu@example.com", use: "home" },
-          ],
-          maritalStatus: {
-            text: "Single",
-          },
-          communication: [
-            {
-              language: {
-                text: "Chinese",
-              },
-            },
-          ],
-          emergencyContact: {
-            emergencyContactName: "",
-            relation: "",
-            phoneNumber: ""
-          },
-          insuranceInfo:{
-            provider:"",
-            policyNumber:"",
-            GroupNumber:"",
-            expirDate:"",
-          }
-        });
-      }, 1000) // 模拟 1 秒延迟
-    );
-    return response; // 返回模拟数据
+      const mockData = mockPatients[patientId];
+      const fhirData = convertToFHIR(mockData);
+      console.log('Mock FHIR data:', fhirData);
+      
+      return fhirData;
+    } catch (error) {
+      return rejectWithValue(error.message || "Failed to load patient data");
+    }
   }
 );
-
 
 const patientSlice = createSlice({
   name: 'patientSlice',
   initialState: {
-    patient: null,
+    patient: null,       
     loading: false,
     error: null,
   },
   reducers: {
     clearPatient(state) {
-      state.patient = null; // 清空患者数据
+      state.patient = null;
     },
   },
   extraReducers: (builder) => {
     builder
+      // 处理获取单个患者
       .addCase(fetchPatientData.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -156,11 +193,10 @@ const patientSlice = createSlice({
       })
       .addCase(fetchPatientData.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Failed to fetch patient data';
+        state.error = action.error.message;
       });
   },
 });
 
 export const { clearPatient } = patientSlice.actions;
-
 export default patientSlice.reducer;

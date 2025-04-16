@@ -4,20 +4,22 @@ import { useState } from 'react'
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardContent } from "@/components/ui/card"
-import { Calendly } from "@/components/ui/Calendly"
+import Link from 'next/link'
 
 export default function SignUpPage() {
-  const [showCalendly, setShowCalendly] = useState(false)
+  
   const [formData, setFormData] = useState({
     name: '',
     businessName: '',
-    email: ''
+    email: '',
+    phone: '',
+    businessType: ''
   })
 
   const handleSubmit = (e) => {
     e.preventDefault()
     // 这里可以添加表单验证
-    if (formData.name && formData.businessName && formData.email) {
+    if (formData.name && formData.businessName && formData.email && formData.phone && formData.businessType) {
       setShowCalendly(true)
     }
   }
@@ -41,7 +43,7 @@ export default function SignUpPage() {
         <hr className="my-6 border-gray-300" />
 
         <CardContent className="p-0">
-          {!showCalendly ? (
+          
             <form onSubmit={handleSubmit} className="space-y-4 max-w-[85%] mx-auto">
               <div className="space-y-6">
                 <Input
@@ -75,11 +77,15 @@ export default function SignUpPage() {
                 <Input
                   type="tel"
                   placeholder="Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
                   className="bg-[#9590EF] text-center placeholder:text-white placeholder:text-[15px]"
                 />
                 <Input
                   type="text"
                   placeholder="Business Type"
+                  value={formData.businessType}
+                  onChange={handleChange}
                   className="bg-[#9590EF] text-center placeholder:text-white placeholder:text-[15px]"
                 />
 
@@ -92,19 +98,14 @@ export default function SignUpPage() {
                 >
                   Submit Request
                 </Button>
+              </div> 
+              <div>
+                <p className='text-center'>
+                  Already have an account? <Link href="/login" className='text-[#4F46E5]'>Login here</Link>
+                </p>
               </div>
             </form>
-          ) : (
-            <div className="space-y-4 max-w-[85%] mx-auto">
-              <h3 className="text-2xl text-center font-semibold text-gray-800">
-                Schedule a Meeting
-              </h3>
-              <Calendly
-                url="https://calendly.com/smileconnect-health/30min"
-                className="min-w-[320px] h-[500px] md:h-[600px] lg:h-[700px] rounded-lg overflow-hidden"
-              />
-            </div>
-          )}
+        
         </CardContent>
       </Card>
     </div>

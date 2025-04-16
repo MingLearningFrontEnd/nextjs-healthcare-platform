@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react";
+import { useSelector } from 'react-redux';
 import PatientBanner from "../../components/PatientBanner";
 import AddMedicationModal from "../../components/AddMedicationModal";
 import MedicationContent from "../../components/MedicationContent";
@@ -76,103 +77,103 @@ const mockMedications = {
   }
 };
 
-const Medications = () => {
-    const [open, setOpen] = useState(false);
-    const [editingMedication, setEditingMedication] = useState(null);
-    const [medications, setMedications] = useState(mockMedications);
+export default function MedicationsPage() {
+  const { patient } = useSelector((state) => state.patientSlice);
+  const [open, setOpen] = useState(false);
+  const [editingMedication, setEditingMedication] = useState(null);
+  const [medications, setMedications] = useState(mockMedications);
 
-    const handleSubmit = (medicationData) => {
-        const newMedicationRecord = {
-            name: medicationData.name,
-            dosage: medicationData.dosage,
-            reason: medicationData.description,
-            prescribedDate: medicationData.prescribedDate ? format(medicationData.prescribedDate, "yyyy-MM-dd") : "",
-            lastRefill: medicationData.lastRefillDate ? format(medicationData.lastRefillDate, "yyyy-MM-dd") : "",
-            prescribedBy: medicationData.prescribedBy,
-            notes: medicationData.notes,
-        };
-
-        const targetSection = medicationData.status === 'current' ? 'current' : 'past';
-        const normalizedCategory = medicationData.category
-            .split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-            .join(' ');
-
-        setMedications(prev => {
-            const updatedMedications = JSON.parse(JSON.stringify(prev));
-            
-            const existingCategory = Object.keys(updatedMedications[targetSection]).find(
-                cat => cat.toLowerCase() === normalizedCategory.toLowerCase()
-            );
-            
-            const categoryToUse = existingCategory || normalizedCategory;
-            
-            if (!updatedMedications[targetSection]) {
-                updatedMedications[targetSection] = {};
-            }
-            
-            if (!updatedMedications[targetSection][categoryToUse]) {
-                updatedMedications[targetSection][categoryToUse] = [];
-            }
-
-            // 如果是编辑状态，先删除原有记录
-            if (editingMedication) {
-                const { section, category, index } = editingMedication;
-                updatedMedications[section][category].splice(index, 1);
-                
-                if (updatedMedications[section][category].length === 0) {
-                    delete updatedMedications[section][category];
-                }
-            }
-            
-            // 添加新记录
-            if (!updatedMedications[targetSection][categoryToUse]) {
-                updatedMedications[targetSection][categoryToUse] = [];
-            }
-            updatedMedications[targetSection][categoryToUse].push(newMedicationRecord);
-            
-            return updatedMedications;
-        });
-
-        setEditingMedication(null);
-        setOpen(false);
+  const handleSubmit = (medicationData) => {
+    const newMedicationRecord = {
+      name: medicationData.name,
+      dosage: medicationData.dosage,
+      reason: medicationData.description,
+      prescribedDate: medicationData.prescribedDate ? format(medicationData.prescribedDate, "yyyy-MM-dd") : "",
+      lastRefill: medicationData.lastRefillDate ? format(medicationData.lastRefillDate, "yyyy-MM-dd") : "",
+      prescribedBy: medicationData.prescribedBy,
+      notes: medicationData.notes,
     };
 
-    const handleDelete = (section, category, index) => {
-        setMedications(prev => {
-            const updatedMedications = JSON.parse(JSON.stringify(prev));
-            updatedMedications[section][category].splice(index, 1);
-            
-            if (updatedMedications[section][category].length === 0) {
-                delete updatedMedications[section][category];
-            }
-            
-            return updatedMedications;
-        });
-    };
+    const targetSection = medicationData.status === 'current' ? 'current' : 'past';
+    const normalizedCategory = medicationData.category
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ');
 
-    const handleEdit = (medicationData) => {
-        setEditingMedication(medicationData);
-        setOpen(true);
-    };
+    setMedications(prev => {
+      const updatedMedications = JSON.parse(JSON.stringify(prev));
+      
+      const existingCategory = Object.keys(updatedMedications[targetSection]).find(
+        cat => cat.toLowerCase() === normalizedCategory.toLowerCase()
+      );
+      
+      const categoryToUse = existingCategory || normalizedCategory;
+      
+      if (!updatedMedications[targetSection]) {
+        updatedMedications[targetSection] = {};
+      }
+      
+      if (!updatedMedications[targetSection][categoryToUse]) {
+        updatedMedications[targetSection][categoryToUse] = [];
+      }
 
-    return (
-        <div className="min-h-screen bg-transparent">
-            <PatientBanner />
-            <MedicationContent 
-                medications={medications}
-                onEdit={handleEdit}
-                onDelete={handleDelete}
-                onAddNew={() => setOpen(true)}
-            />
-            <AddMedicationModal 
-                open={open}
-                onOpenChange={setOpen}
-                onSubmit={handleSubmit}
-                editingMedication={editingMedication}
-            />
-        </div>
-    );
-};
+      // 如果是编辑状态，先删除原有记录
+      if (editingMedication) {
+        const { section, category, index } = editingMedication;
+        updatedMedications[section][category].splice(index, 1);
+        
+        if (updatedMedications[section][category].length === 0) {
+          delete updatedMedications[section][category];
+        }
+      }
+      
+      // 添加新记录
+      if (!updatedMedications[targetSection][categoryToUse]) {
+        updatedMedications[targetSection][categoryToUse] = [];
+      }
+      updatedMedications[targetSection][categoryToUse].push(newMedicationRecord);
+      
+      return updatedMedications;
+    });
 
-export default Medications;
+    setEditingMedication(null);
+    setOpen(false);
+  };
+
+  const handleDelete = (section, category, index) => {
+    setMedications(prev => {
+      const updatedMedications = JSON.parse(JSON.stringify(prev));
+      updatedMedications[section][category].splice(index, 1);
+      
+      if (updatedMedications[section][category].length === 0) {
+        delete updatedMedications[section][category];
+      }
+      
+      return updatedMedications;
+    });
+  };
+
+  const handleEdit = (medicationData) => {
+    setEditingMedication(medicationData);
+    setOpen(true);
+  };
+
+  if (!patient) return null;
+
+  return (
+    <main className="container mx-auto pb-32">
+      <MedicationContent 
+        medications={medications}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+        onAddNew={() => setOpen(true)}
+      />
+      <AddMedicationModal 
+        open={open}
+        onOpenChange={setOpen}
+        onSubmit={handleSubmit}
+        editingMedication={editingMedication}
+      />
+    </main>
+  );
+}

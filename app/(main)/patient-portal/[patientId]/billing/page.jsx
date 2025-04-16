@@ -12,7 +12,6 @@ export default function Page({ params }) {
 
     return (
         <div className="min-h-screen bg-transparent">
-            <PatientBanner />
             <BillingContent 
                 patientId={patientId}
                 onSelectPayment={setSelectedPayment}

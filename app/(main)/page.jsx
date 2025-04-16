@@ -28,7 +28,6 @@ import ScrollDownButton from '@/components/ui/ScrollDownButton'
 const App = () => {
   return (
     <>
-
       <main className='w-[99vw] ' role="main" aria-label="ORIS Health Platform">
       {/* Hero Section */}
       <section id="section-1" className="w-full bg-black rounded-b-3xl  overflow-hidden" aria-labelledby="hero-title">
@@ -294,7 +293,7 @@ const App = () => {
                   />
                 </div>
                 <CardContent className="w-full lg:flex-1 p-0 flex flex-col items-center text-center">
-                  <h3 id="solution-1" className="text-3xl mb-2 sm:text-2xl md:text-4xl lg:text-4xl font-bold text-indigo-700 transition-all duration-300">ORIS</h3>
+                  <h3 id="solution-1" className="text-3xl mb-2 sm:text-2xl md:text-4xl lg:text-4xl font-bold text-indigo-700 transition-all duration-300">Dental</h3>
                   <p className="mt-2  mb-3 leading-relaxed text-semibold px-2
                     text-lg sm:text-base md:text-xl lg:text-base xl:text-lg 2xl:text-xl
                     transition-all duration-300">
@@ -320,7 +319,7 @@ const App = () => {
                   />
                 </div>
                 <CardContent className="w-full lg:flex-1 p-0 flex flex-col items-center text-center">
-                  <h3 id="solution-2" className="text-3xl mb-2 sm:text-2xl md:text-4xl lg:text-4xl font-bold text-indigo-700 transition-all duration-300">ORIS</h3>
+                  <h3 id="solution-2" className="text-3xl mb-2 sm:text-2xl md:text-4xl lg:text-4xl font-bold text-indigo-700 transition-all duration-300">Dental</h3>
                   <p className="mt-2  mb-3 leading-relaxed text-semibold px-2
                     text-lg sm:text-base md:text-xl lg:text-base xl:text-lg 2xl:text-xl
                     transition-all duration-300">

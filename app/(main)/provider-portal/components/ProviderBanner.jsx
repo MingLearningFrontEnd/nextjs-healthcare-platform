@@ -9,7 +9,7 @@ export default function ProviderBanner() {
   const { provider } = useSelector((state) => state.providerSlice);
 
   if (!provider) {
-    return <div className="py-20 text-center text-3xl"> </div>;
+    return <div className="py-20 text-center text-3xl">lol </div>;
   }
   const name = provider.name
   const email = provider.email

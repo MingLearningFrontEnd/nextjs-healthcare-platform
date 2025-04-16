@@ -41,7 +41,6 @@ const BillingInformation = ({ params }) => {
 
     return (
         <div className="min-h-screen bg-transparent">
-            <PatientBanner />
             <div className="container mx-auto py-10">
                 {/* title and back button */}
                 <div className="flex justify-between items-center mb-6">

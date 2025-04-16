@@ -123,7 +123,6 @@ export default function YourTeamPage() {
 
   return (
     <div className='min-h-screen'>
-      <PatientBanner />
       <div className='container mx-auto py-12 px-4'>
         <h2 className='text-2xl lg:text-4xl font-bold mb-8 lg:mb-12 text-center'>
           Your Current Healthcare Team
