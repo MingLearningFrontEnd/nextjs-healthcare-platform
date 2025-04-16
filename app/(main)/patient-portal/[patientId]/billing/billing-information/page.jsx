@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export const insuranceData = {
+const insuranceData = {
     insuranceName: "Dental Care Plus",
     policyNumber: "DCP-2024-78945612",
     groupNumber: "GRP-123456",
