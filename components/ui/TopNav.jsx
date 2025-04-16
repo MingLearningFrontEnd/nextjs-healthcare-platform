@@ -90,7 +90,7 @@ const TopNav = () => {
                             { name: "Insurance", path: `/patient-portal/${patientId}/insurance` },
                             { name: "Providers", path: `/provider-portal/${providerId}` },
                             { name: "Patients", path: `/patient-portal/${patientId}` },
-                            {name:"Practice", path:`/practice-portal/`}
+                            {name:"Practice", path:'/practice-portal/1'}
                         ].map((item) => (
                             <div
                                 key={item.name}
