@@ -122,7 +122,7 @@ const TopNav = () => {
                 {/* Logo */}
                 <div className="text-xl font-bold w-2/12">
                     <Link href="/">
-                        <Image src={whiteLogo} alt="Logo" width={200} className="absolute top-[-75px] md:scale-75 lg:scale-100" />
+                        <Image src={whiteLogo} alt="Logo" width={170} className="absolute top-[-60px] md:scale-75 lg:scale-100" />
                     </Link>
                 </div>
 
@@ -148,7 +148,7 @@ const TopNav = () => {
 
                 {/* Navigation Menu */}
                 <div
-                    className={`absolute bg-[#121212] text-xs top-16 w-full md:static md:w-auto md:flex md:space-x-2 lg:space-x-2 xl:space-x-3 transition-all duration-300 ${
+                    className={`absolute bg-[#121212] text-xs top-[48px] left-0 w-full md:static md:w-auto md:flex md:space-x-2 lg:space-x-2 xl:space-x-3 transition-all duration-300 ${
                         isMenuOpen ? 'block' : 'hidden'
                     } md:block z-50`}
                 >
@@ -157,17 +157,17 @@ const TopNav = () => {
                         <div
                             key={item.name}
                             onClick={() => handleNavigation(item.path, item.requiresAuth)}
-                            className="block xs:pl-3 md:px-0 lg:px-2 py-2 text-sm sm:text-sm md:text-[13px] lg:text-base xl:text-lg md:inline transition-all duration-200 hover:bg-gray-800 active:border-2 active:border-[#360984] rounded-lg cursor-pointer"
+                            className="block  text-center xs:pl-3 md:px-0 lg:px-2 py-2 text-sm sm:text-sm md:text-[13px] lg:text-base xl:text-lg md:inline transition-all duration-200 hover:bg-gray-800 active:border-2 active:border-[#360984] rounded-lg cursor-pointer"
                         >
                             {item.name}
                         </div>
                     ))}
 
                     {/* Small Screen Buttons */}
-                    <div className="flex flex-col space-y-2 mt-4 px-4 md:hidden mb-6">
+                    <div className="flex flex-row justify-center space-x-4 mt-4 px-4 md:hidden mb-6">
                         {isLoggedIn ? (
                             <button 
-                                className="py-1 w-full rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-800 active:border-2 active:border-[#360984]"
+                                className="py-1 w-[100px] rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-800 active:border-2 active:border-[#360984]"
                                 onClick={handleLogout}
                             >
                                 <Image src={signOut} alt="Sign Out" />
@@ -175,13 +175,13 @@ const TopNav = () => {
                         ) : (
                             <>
                                 <button 
-                                    className="py-1 w-full rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-800 active:border-2 active:border-[#360984]"
+                                    className="py-1 w-[100px] rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-800 active:border-2 active:border-[#360984]"
                                     onClick={handleLogin}
                                 >
                                     <Image src={signIn} alt="Sign In" />
                                 </button>
                                 <button 
-                                    className="py-1 w-full rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-800 active:border-2 active:border-[#360984]"
+                                    className="py-1 w-[100px] rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-800 active:border-2 active:border-[#360984]"
                                     onClick={handleSignup}
                                 >
                                     <Image src={signUp} alt="Sign Up" />
